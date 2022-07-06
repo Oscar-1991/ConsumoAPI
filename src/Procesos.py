@@ -7,7 +7,6 @@ import requests
 from pip._vendor.urllib3.util import response
 
 
-
 def lecturaTxt():
     try:
         archivo = open("Clientes.txt", "r+")
@@ -48,7 +47,6 @@ def separarDatos(contenido):
 def altaEmployee(surname, firstname, country, language):
     try:
         url = 'http://localhost:8080/apiv1/employees/add'
-        requests.post(url)
         data = {"surname": surname, "firstname": firstname, "country": country, "language": language}
         response = requests.post(url, json=data)
         resultado = response.json()        
@@ -60,7 +58,6 @@ def altaEmployee(surname, firstname, country, language):
 def altaCountry(code, name, airport):
     try:
         url = 'http://localhost:8080/apiv1/countries/add'
-        requests.post(url)
         data = {"code": code, "name": name, "airport": airport}
         response = requests.post(url, json=data)
         resultado = response.json()        
@@ -74,7 +71,6 @@ def altaCountry(code, name, airport):
 def altaLanguage(code, name):
     try:
         url = 'http://localhost:8080/apiv1/languages/add'
-        requests.post(url)
         data = {"code": code, "name": name}
         response = requests.post(url, json=data)
         resultado = response.json()        
@@ -87,7 +83,6 @@ def altaLanguage(code, name):
 def altaAirport(name):
     try:
         url = 'http://localhost:8080/apiv1/airports/add'
-        requests.post(url)
         data = {"name": name}
         response = requests.post(url, json=data)
         resultado = response.json()        
