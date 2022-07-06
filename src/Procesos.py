@@ -27,7 +27,16 @@ def formateo(contenido):
 def separarDatos(contenido):
     for c in contenido:
         if(c != ''):
-            print(str(c))
+            aux = c.split(',')
+            firstname = aux[0]
+            surname = aux[1]
+            country = aux[2]
+            language = aux[3]
+            airport = aux[4]
+            altaAirport(airport)
+            altaLanguage('LAN-' + language[:4], language)
+            # altaCountry('COUN-' + country[:4], country, airport)
+            # al
             
 
 def altaEmployee(surname, firstname, country, language):
@@ -77,4 +86,8 @@ def altaAirport(name):
     except:
         print("Error al guardar.")
     else:
-        print(str(resultado))        
+        print(str(resultado))
+        
+
+def buscarIdAirport():
+    pass
