@@ -33,10 +33,16 @@ def separarDatos(contenido):
             country = aux[2]
             language = aux[3]
             airport = aux[4]
-            altaAirport(airport)
-            altaLanguage('LAN-' + language[:4], language)
-            # altaCountry('COUN-' + country[:4], country, airport)
-            # al
+            
+            res_airport = altaAirport(airport)
+            idAirport = obtenerId(res_airport)
+            code = language[:5]
+            res_language = altaLanguage('LANG -' + code.upper(), language)
+            idLanguage = obtenerId(res_language)
+            code = country[:5]
+            res_country = altaCountry('COUN -' + code.upper(), country, idAirport)
+            idCountry = obtenerId(res_country)
+            altaEmployee(surname, firstname, idCountry, idLanguage)
             
 
 def altaEmployee(surname, firstname, country, language):
@@ -62,6 +68,7 @@ def altaCountry(code, name, airport):
         print("Error al guardar.")
     else:
         print(str(resultado))
+        return resultado
         
 
 def altaLanguage(code, name):
@@ -75,6 +82,7 @@ def altaLanguage(code, name):
         print("Error al guardar.")
     else:
         print(str(resultado))
+        return resultado
 
 def altaAirport(name):
     try:
@@ -87,7 +95,8 @@ def altaAirport(name):
         print("Error al guardar.")
     else:
         print(str(resultado))
-        
+        return resultado
 
-def buscarIdAirport():
-    pass
+def obtenerId(resultado):
+    aux = resultado['id']
+    return aux
